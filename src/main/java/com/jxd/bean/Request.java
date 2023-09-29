@@ -9,11 +9,11 @@ import java.util.Date;
 
 @Data
 @TableName("Request")
-public class Case {
+public class Request {
     //    indicate primary key and type is auto-increment
     @TableId(type = IdType.AUTO)
-    private int request_id;
-    private int client_id;
+    private Integer request_id;
+    private Integer client_id;
     private String request_message;
     private String current_status;
     private String assigned_to;

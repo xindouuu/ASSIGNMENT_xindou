@@ -1,11 +1,11 @@
 package com.jxd.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jxd.bean.Case;
-import com.jxd.mapper.CaseMapper;
-import com.jxd.service.CaseService;
+import com.jxd.bean.Request;
+import com.jxd.mapper.RequestMapper;
+import com.jxd.service.RequestService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CaseServiceImpl extends ServiceImpl<CaseMapper, Case> implements CaseService {
+public class RequestServiceImpl extends ServiceImpl<RequestMapper, Request> implements RequestService {
 }

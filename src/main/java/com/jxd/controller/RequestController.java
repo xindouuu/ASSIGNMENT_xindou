@@ -2,9 +2,9 @@ package com.jxd.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.jxd.bean.Case;
-import com.jxd.mapper.CaseMapper;
-import com.jxd.service.CaseService;
+import com.jxd.bean.Request;
+import com.jxd.mapper.RequestMapper;
+import com.jxd.service.RequestService;
 import com.jxd.util.Result;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,28 +12,25 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-public class CaseController {
+public class RequestController {
     @Resource
-    private CaseMapper caseMapper;
+    private RequestMapper requestMapper;
     @Resource
-    private CaseService caseService;
+    private RequestService requestService;
 
 //    Create case
     @PostMapping("/saveCase")
     //to receive JSON data
-    public Result save(@RequestBody Case case1){
-        caseService.save(case1);
+    public Result save(@RequestBody Request request){
+        requestService.save(request);
         return Result.success();
     }
 //  Retrieve cases raised by a client
     @RequestMapping("/getCasesByClientId/{id}")
-    public Result getCasesByClientId(@PathVariable int id){
-        QueryWrapper<Case> queryWrapper = Wrappers.query();
-        QueryWrapper<Case> cases = queryWrapper.eq("client_id",id);
-        List<Case> cases1 = caseMapper.selectList(cases);
-        for(Case c:cases1){
-            System.out.println(c);
-        }
+    public Result getCasesByClientId(@PathVariable Integer id){
+        QueryWrapper<Request> queryWrapper = Wrappers.query();
+        QueryWrapper<Request> cases = queryWrapper.eq("client_id",id);
+        List<Request> cases1 = requestMapper.selectList(cases);
         return Result.success(cases1);
     }
 
@@ -41,9 +38,9 @@ public class CaseController {
     @RequestMapping("/getCompletedCases")
     public Result getCompletedCases(){
         String search = "Completed";
-        QueryWrapper<Case> queryWrapper = Wrappers.query();
-        QueryWrapper<Case> cases = queryWrapper.like("current_status", search);
-        List<Case> cases1 = caseMapper.selectList(cases);
+        QueryWrapper<Request> queryWrapper = Wrappers.query();
+        QueryWrapper<Request> cases = queryWrapper.like("current_status", search);
+        List<Request> cases1 = requestMapper.selectList(cases);
         return Result.success(cases1);
     }
 
@@ -51,10 +48,10 @@ public class CaseController {
     @RequestMapping("/getOutstandingCases")
     public Result getOutstandingCases(){
         String search = "In progress";
-        QueryWrapper<Case> queryWrapper = Wrappers.query();
-        QueryWrapper<Case> cases = queryWrapper.like("current_status", search);
-        List<Case> cases1 = caseMapper.selectList(cases);
-        for(Case c: cases1){
+        QueryWrapper<Request> queryWrapper = Wrappers.query();
+        QueryWrapper<Request> cases = queryWrapper.like("current_status", search);
+        List<Request> cases1 = requestMapper.selectList(cases);
+        for(Request c: cases1){
             System.out.println(c);
         }
         return Result.success(cases1);
@@ -63,15 +60,15 @@ public class CaseController {
 //  Retrieve all cases handled by a particular staff of Ascendant Solutions
     @RequestMapping("/getCasesbyStaffName")
     public Result getCasesbyStaffName(@RequestParam String name){
-        QueryWrapper<Case> queryWrapper = Wrappers.query();
-        QueryWrapper<Case> cases = queryWrapper.like("assigned_to", name);
-        List<Case> cases1 = caseMapper.selectList(cases);
+        QueryWrapper<Request> queryWrapper = Wrappers.query();
+        QueryWrapper<Request> cases = queryWrapper.like("assigned_to", name);
+        List<Request> cases1 = requestMapper.selectList(cases);
         return Result.success(cases1);
     }
 //  Update a case
     @PutMapping("/updateCases")
-    public Result update(@RequestBody Case case1){
-        caseService.updateById(case1);
+    public Result update(@RequestBody Request request1){
+        requestService.updateById(request1);
         return Result.success();
     }
 }
