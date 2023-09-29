@@ -13,9 +13,6 @@ Clients can be added, updated, deleted, and retrieved, while cases can be create
 
 SpringBoot , MyBatis-Plus , MySQL
 
-## Switch to another file
-
-All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
 
 ## Design Decisions
 
