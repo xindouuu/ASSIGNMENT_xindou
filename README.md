@@ -46,3 +46,120 @@ All your files and folders are presented as a tree in the file explorer. You can
 -   Update the database credentials in the `application.yml` file.
 
 3. **Build and Run** : The application will start and run on `http://localhost:9090`.
+
+# API Documentation
+
+This documentation provides an overview of the APIs available in this application for managing clients and requests. These APIs allow you to perform CRUD (Create, Read, Update, Delete) operations on client and request data.
+
+## Table of Contents
+
+1.  Client APIs
+    -   Add Client
+    -   Delete Client
+    -   Retrieve Client by ID
+    -   Retrieve All Clients
+    -   Update Client
+2.  Request APIs
+    -   Create Case
+    -   Retrieve Cases by Client ID
+    -   Retrieve Completed Cases
+    -   Retrieve Outstanding Cases
+    -   Retrieve Cases by Staff Name
+    -   Update Case
+
+## Client APIs
+
+### Add Client
+
+-   **Endpoint:** `POST /saveClient`
+-   **Description:** Add a new client to the system.
+-   **Request Body:**
+    -   JSON object representing the client.
+-   **Response:**
+    -   HTTP status code indicating success or failure.
+
+### Delete Client
+
+-   **Endpoint:** `DELETE /del/{id}`
+-   **Description:** Delete a client by their ID.
+-   **Path Parameter:**
+    -   `id` - The ID of the client to be deleted.
+-   **Response:**
+    -   HTTP status code indicating success or failure.
+
+### Retrieve Client by ID
+
+-   **Endpoint:** `GET /getClientByID/{id}`
+-   **Description:** Retrieve a client by their ID.
+-   **Path Parameter:**
+    -   `id` - The ID of the client to be retrieved.
+-   **Response:**
+    -   JSON object representing the retrieved client.
+
+### Retrieve All Clients
+
+-   **Endpoint:** `GET /listClients`
+-   **Description:** Retrieve a list of all clients.
+-   **Response:**
+    -   JSON array containing client objects.
+
+### Update Client
+
+-   **Endpoint:** `PUT /updateClient`
+-   **Description:** Update an existing client's information.
+-   **Request Body:**
+    -   JSON object representing the updated client information.
+-   **Response:**
+    -   HTTP status code indicating success or failure.
+
+## Request (Case) APIs
+
+### Create Case
+
+-   **Endpoint:** `POST /saveCase`
+-   **Description:** Create a new case (request) in the system.
+-   **Request Body:**
+    -   JSON object representing the case (request).
+-   **Response:**
+    -   HTTP status code indicating success or failure.
+
+### Retrieve Cases by Client ID
+
+-   **Endpoint:** `GET /getCasesByClientId/{id}`
+-   **Description:** Retrieve a list of cases (requests) raised by a specific client.
+-   **Path Parameter:**
+    -   `id` - The ID of the client for whom cases are retrieved.
+-   **Response:**
+    -   JSON array containing case (request) objects.
+
+### Retrieve Completed Cases
+
+-   **Endpoint:** `GET /getCompletedCases`
+-   **Description:** Retrieve a list of all completed cases.
+-   **Response:**
+    -   JSON array containing case (request) objects.
+
+### Retrieve Outstanding Cases
+
+-   **Endpoint:** `GET /getOutstandingCases`
+-   **Description:** Retrieve a list of outstanding cases (cases in progress).
+-   **Response:**
+    -   JSON array containing case (request) objects.
+
+### Retrieve Cases by Staff Name
+
+-   **Endpoint:** `GET /getCasesbyStaffName`
+-   **Description:** Retrieve a list of cases handled by a specific staff member.
+-   **Query Parameter:**
+    -   `name` - The name of the staff member.
+-   **Response:**
+    -   JSON array containing case (request) objects.
+
+### Update Case
+
+-   **Endpoint:** `PUT /updateCases`
+-   **Description:** Update an existing case (request).
+-   **Request Body:**
+    -   JSON object representing the updated case (request) information.
+-   **Response:**
+    -   HTTP status code indicating success or failure.
