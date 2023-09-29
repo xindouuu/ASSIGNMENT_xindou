@@ -11,7 +11,7 @@
  Target Server Version : 50719 (5.7.19)
  File Encoding         : 65001
 
- Date: 29/09/2023 21:02:03
+ Date: 29/09/2023 21:03:40
 */
 
 SET NAMES utf8mb4;
@@ -32,6 +32,15 @@ CREATE TABLE `Client` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of Client
+-- ----------------------------
+BEGIN;
+INSERT INTO `Client` (`client_id`, `name`, `age`, `address`, `birth_date`, `company`) VALUES (1, 'Tom Doe', 25, '123 Main St', '1995-02-15', 'Beco Inc');
+INSERT INTO `Client` (`client_id`, `name`, `age`, `address`, `birth_date`, `company`) VALUES (2, 'Jane Smith', 28, '456 Elm St', '1995-02-20', 'XYZ Corporation');
+INSERT INTO `Client` (`client_id`, `name`, `age`, `address`, `birth_date`, `company`) VALUES (3, 'Bob Johnson', 35, '789 Oak St', '1988-09-10', 'LMN Inc');
+COMMIT;
+
+-- ----------------------------
 -- Table structure for Request
 -- ----------------------------
 DROP TABLE IF EXISTS `Request`;
@@ -46,5 +55,15 @@ CREATE TABLE `Request` (
   KEY `client_id` (`client_id`),
   CONSTRAINT `request_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `Client` (`client_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of Request
+-- ----------------------------
+BEGIN;
+INSERT INTO `Request` (`request_id`, `client_id`, `request_message`, `current_status`, `assigned_to`, `created_date`) VALUES (1, 1, 'Please review project proposal', 'In progress', 'Alice', '2023-09-29 18:31:24');
+INSERT INTO `Request` (`request_id`, `client_id`, `request_message`, `current_status`, `assigned_to`, `created_date`) VALUES (2, 2, 'Update customer information', 'Completed', 'Eva', '2023-09-29 18:31:24');
+INSERT INTO `Request` (`request_id`, `client_id`, `request_message`, `current_status`, `assigned_to`, `created_date`) VALUES (3, 1, 'Troubleshoot server issue', 'In progress', 'Bob', '2023-09-29 18:31:24');
+INSERT INTO `Request` (`request_id`, `client_id`, `request_message`, `current_status`, `assigned_to`, `created_date`) VALUES (4, 2, 'pls reply to email', 'Completed', 'Alice', '2023-09-29 18:31:24');
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
