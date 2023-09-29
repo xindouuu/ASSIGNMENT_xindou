@@ -26,10 +26,6 @@ public class ApplicationTest {
         System.out.println(client);
     }
     @Test
-    public void testRequestMapper(){
-
-    }
-    @Test
     public void testClientService(){
         List<Client> clients = clientService.list();
         for(Client client: clients){
